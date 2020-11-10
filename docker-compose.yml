@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  
+  woolish:
+    build: .
+    container_name: woolish
+    restart: unless-stopped
+    volumes:
+      - ./src:/app
+    environment:
+      APP_SECRET_TOKEN: 123456
+    command: >
+      bash -c "pip install -r /app/requirements.txt
+      && python /app/app.py"
+    ports:
+      - "8000:8000"
